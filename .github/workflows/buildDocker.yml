@@ -59,7 +59,7 @@ jobs:
           port: 22
           script: |
             # Pull the Docker image (no need to login since it's public)
-            docker pull shreyaswebsite:latest || true
+            docker pull tshrey/shreyaswebsite:latest || true
             docker stop shreyaswebsite || true
             docker rm shreyaswebsite || true
             docker run -d -p 8080:8080 --name shreyaswebsite shreyaswebsite:latest
