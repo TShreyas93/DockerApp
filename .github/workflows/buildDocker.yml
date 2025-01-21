@@ -54,6 +54,11 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
+            # Stop all running Docker containers
+            docker stop $(docker ps -q) || true
+            # Remove stopped containers (if any)
+            docker rm $(docker ps -aq) || true
+
             # Pull the Docker image (no need to login since it's public)
             docker pull tshrey/shreyaswebsite:latest || true
             docker stop shreyaswebsite || true
