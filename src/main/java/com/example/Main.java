@@ -14,8 +14,8 @@ public class Main {
         // Configure SSL
         SslContextFactory.Server sslContextFactory = new SslContextFactory.Server();
         sslContextFactory.setKeyStorePath("/app/keystore.jks"); // Path to the keystore
-        sslContextFactory.setKeyStorePassword("DummyPassword123"); // Keystore password
-        sslContextFactory.setKeyManagerPassword("DummyPassword123"); // Key manager password
+        sslContextFactory.setKeyStorePassword("DummyPassword123"); // Keystore password. I know this is bad practise will learn in furture how to not hardcode passwords :)
+        sslContextFactory.setKeyManagerPassword("DummyPassword123"); // Key manager password. I know this is bad practise will learn in furture how to not hardcode passwords :)
         sslContextFactory.setEndpointIdentificationAlgorithm(null);
 
         // Create an HTTPS connector
