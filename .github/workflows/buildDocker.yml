@@ -26,7 +26,7 @@ jobs:
       - name: Build JAR
         run: mvn clean package
 
-        # List files in target directory to ensure JAR is present
+      # List files in target directory to ensure JAR is present
       - name: List files in target directory
         run: |
          ls -l target/
@@ -41,13 +41,13 @@ jobs:
       # Build the Docker image
       - name: Build Docker Image
         run: |
-          docker build -t my-app:latest .
+          docker build -t shreyasWebsite:latest .
 
       # Push Docker image to Docker Hub
       - name: Push Docker Image
         run: |
-          docker tag my-app:latest ${{ secrets.DOCKER_USERNAME }}/my-app:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+          docker tag shreyasWebsite:latest ${{ secrets.DOCKER_USERNAME }}/shreyasWebsite:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/shreyasWebsite:latest
 
       # Deploy to EC2
       - name: Deploy to EC2
@@ -59,7 +59,7 @@ jobs:
           port: 22
           script: |
             # Pull the Docker image (no need to login since it's public)
-            docker pull tshrey/my-app:latest || true
-            docker stop my-app || true
-            docker rm my-app || true
-            docker run -d -p 8080:8080 --name my-app tshrey/my-app:latest
+            docker pull tshreyasWebsite:latest || true
+            docker stop shreyasWebsite || true
+            docker rm shreyasWebsite || true
+            docker run -d -p 8080:8080 --name shreyasWebsite tshreyasWebsite:latest
