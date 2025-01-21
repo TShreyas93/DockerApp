@@ -41,13 +41,13 @@ jobs:
       # Build the Docker image
       - name: Build Docker Image
         run: |
-          docker build -t shreyasWebsite:latest .
+          docker build -t shreyaswebsite:latest .
 
       # Push Docker image to Docker Hub
       - name: Push Docker Image
         run: |
-          docker tag shreyasWebsite:latest ${{ secrets.DOCKER_USERNAME }}/shreyasWebsite:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/shreyasWebsite:latest
+          docker tag shreyaswebsite:latest ${{ secrets.DOCKER_USERNAME }}/shreyaswebsite:latest
+          docker push ${{ secrets.DOCKER_USERNAME }}/shreyaswebsite:latest
 
       # Deploy to EC2
       - name: Deploy to EC2
@@ -59,7 +59,7 @@ jobs:
           port: 22
           script: |
             # Pull the Docker image (no need to login since it's public)
-            docker pull tshreyasWebsite:latest || true
-            docker stop shreyasWebsite || true
-            docker rm shreyasWebsite || true
-            docker run -d -p 8080:8080 --name shreyasWebsite tshreyasWebsite:latest
+            docker pull shreyaswebsite:latest || true
+            docker stop shreyaswebsite || true
+            docker rm shreyaswebsite || true
+            docker run -d -p 8080:8080 --name shreyaswebsite shreyaswebsite:latest
