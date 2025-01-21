@@ -1,4 +1,4 @@
-name: Generate and Commit JKS File
+name: Generate Keystore JKS
 
 on:
   workflow_dispatch:
