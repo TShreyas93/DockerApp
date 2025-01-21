@@ -13,7 +13,7 @@ public class Main {
 
         // Configure SSL
         SslContextFactory.Server sslContextFactory = new SslContextFactory.Server();
-        sslContextFactory.setKeyStorePath("/home/ec2-user/Website/Certs/keystore.jks"); // Path to the keystore
+        sslContextFactory.setKeyStorePath("/app/keystore.jks"); // Path to the keystore
         sslContextFactory.setKeyStorePassword("DummyPassword123"); // Keystore password
         sslContextFactory.setKeyManagerPassword("DummyPassword123"); // Key manager password
         sslContextFactory.setEndpointIdentificationAlgorithm(null);
