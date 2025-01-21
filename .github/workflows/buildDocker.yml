@@ -58,7 +58,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            docker pull ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+            # Pull the Docker image (no need to login since it's public)
+            docker pull tshrey/my-app:latest || true
             docker stop my-app || true
             docker rm my-app || true
-            docker run -d -p 8080:8080 --name my-app ${{ secrets.DOCKER_USERNAME }}/my-app:latest
+            docker run -d -p 8080:8080 --name my-app tshrey/my-app:latest
