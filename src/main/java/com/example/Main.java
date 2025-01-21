@@ -20,7 +20,7 @@ public class Main {
 
         // Create an HTTPS connector
         ServerConnector sslConnector = new ServerConnector(server, sslContextFactory);
-        sslConnector.setPort(8443); // HTTPS port
+        sslConnector.setPort(8080); // HTTPS port
         server.addConnector(sslConnector);
 
         // Configure the servlet context handler
