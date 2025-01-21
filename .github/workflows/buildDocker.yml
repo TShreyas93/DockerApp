@@ -41,13 +41,12 @@ jobs:
       # Build the Docker image
       - name: Build Docker Image
         run: |
-          docker build -t shreyaswebsite:latest .
+          docker build -t tshrey/shreyaswebsite:latest .
 
       # Push Docker image to Docker Hub
       - name: Push Docker Image
         run: |
-          docker tag shreyaswebsite:latest ${{ secrets.DOCKER_USERNAME }}/shreyaswebsite:latest
-          docker push ${{ secrets.DOCKER_USERNAME }}/shreyaswebsite:latest
+          docker push tshrey/shreyaswebsite:latest
 
       # Deploy to EC2
       - name: Deploy to EC2
@@ -62,4 +61,4 @@ jobs:
             docker pull tshrey/shreyaswebsite:latest || true
             docker stop shreyaswebsite || true
             docker rm shreyaswebsite || true
-            docker run -d -p 8080:8080 --name shreyaswebsite shreyaswebsite:latest
+            docker run -d -p 8080:8080 --name shreyaswebsite tshrey/shreyaswebsite:latest
